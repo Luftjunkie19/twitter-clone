@@ -1,8 +1,13 @@
 import { FaFeather } from 'react-icons/fa';
 
+import { onRegisterModal } from '@/hooks/useRegisterModal';
+
 function TwitterSidebarButton() {
+  const registerModal=onRegisterModal();
   return (
-    <div className="">
+    <div className="" onClick={()=>{
+      registerModal.onOpen();
+    }}>
     <div className="mt-6 lg:hidden rounded-full h-14 w-14 p-4 flex items-center justify-center bg-sky-500 hover:bg-opacity-80 transition cursor-pointer">
         <FaFeather size={24} color='white'/>
     </div>

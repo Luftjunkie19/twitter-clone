@@ -3,6 +3,8 @@ import React, {
   useState,
 } from 'react';
 
+import { signIn } from 'next-auth/react';
+
 import { onLoginModal } from '../../hooks/useLoginModal';
 import Input from '../Input';
 import Modal from '../Modal';
@@ -19,13 +21,17 @@ const onSubmit= useCallback(async()=>{
     try{
         setIsLoading(true);
 
+        await signIn('credentials', {
+            email,
+            password
+        })
 
         loginModal.onClose();
     }catch(err){}
     finally{
         setIsLoading(false);
     }
-},[loginModal]);
+},[email, loginModal, password]);
 
 const bodyContent=(
     <div className="flex flex-col gap-4">
