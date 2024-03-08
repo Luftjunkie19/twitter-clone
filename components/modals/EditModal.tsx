@@ -4,7 +4,6 @@ import React, {
   useState,
 } from 'react';
 
-import axios from 'axios';
 import toast from 'react-hot-toast';
 
 import useCurrentUser from '@/hooks/useCurrentUser';
@@ -41,7 +40,14 @@ const submitHandler=useCallback(async ()=>{
     try {
         setIsLoading(true);
 
-        await axios.patch('/api/edit',{name, username, coverImage, profileImage, bio});
+    await fetch('/api/edit', {
+          method:'PATCH',
+          body:JSON.stringify({name, username, coverImage, profileImage, bio}),
+          headers:{
+          'Content-Type':"application/json"
+          }
+        });
+
         mutateFetchedUser();
         toast.success('Updated successfully');
 

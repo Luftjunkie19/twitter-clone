@@ -17,15 +17,15 @@ function Sidebar() {
 const router=useRouter();
 const {data:currentUser}=useCurrentUser();
     const items=[{label:'Home', href:'/', icon:BsHouse}, 
-    {label:'Notifications', href:"/notifications", icon:BsBell, auth:true},
-     {label:"Profile", href:"/users/id1", icon:BsPerson, auth:true}]
+    {label:'Notifications', href:"/notifications", icon:BsBell, auth:true, alert:currentUser?.hasNotification},
+     {label:"Profile", href:`/users/${currentUser?.id}`, icon:BsPerson, auth:true}]
 
   return (
     <div className='col-span-1 h-full pr-4 md:pr-6'>
         <div className="flex flex-col items-end">
             <div className=" space-y-2 lg:w-[230px]">
   <SidebarLogo/>
-  {items.map((item)=>(<SidebarItem auth={item.auth} key={item.href} icon={item.icon} label={item.label} href={item.href}/>))}
+  {items.map((item)=>(<SidebarItem alert={item.alert} auth={item.auth} key={item.href} icon={item.icon} label={item.label} href={item.href}/>))}
           {currentUser &&
            <SidebarItem onClick={async ()=>{await signOut()}} icon={BiLogOut} label='Logout'/>
           }

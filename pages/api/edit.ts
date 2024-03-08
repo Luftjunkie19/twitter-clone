@@ -29,8 +29,7 @@ const updatedUser = await prisma.user.update({
         name,username, bio, profileImage, coverImage
     }
 });
-
-return res.status(200).json(updatedUser);
+ res.status(200).end();
 
     }
     catch(err){
