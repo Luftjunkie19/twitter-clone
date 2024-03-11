@@ -30,6 +30,7 @@ function UserBio({userId}: Props) {
     },[fetchedUser.createdAt])
   return (
     <div className='border-b-[1px] border-neutral-800 pb-4'>
+  
         <div className="flex justify-end p-2">
            {data?.id === userId ? (
             <Button secondary label='Edit' onClick={()=>{

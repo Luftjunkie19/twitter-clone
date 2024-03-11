@@ -7,5 +7,5 @@
 }
 
 body{
-  @apply h-full bg-black
+  @apply h-full bg-black;
 }

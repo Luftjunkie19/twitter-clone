@@ -33,7 +33,7 @@ const onSubmit=useCallback(async ()=>{
 
         const url = isComment ? `/api/comments?postId=${postId}` : `/api/posts`
 
-        await axios.post(url, {body});
+        await axios.post(url, {body:body});
 
         toast.success(isComment ? 'Comment added !' : 'Tweet sent !');
 

@@ -4,6 +4,7 @@ import React, {
   useState,
 } from 'react';
 
+import axios from 'axios';
 import toast from 'react-hot-toast';
 
 import useCurrentUser from '@/hooks/useCurrentUser';
@@ -40,13 +41,7 @@ const submitHandler=useCallback(async ()=>{
     try {
         setIsLoading(true);
 
-    await fetch('/api/edit', {
-          method:'PATCH',
-          body:JSON.stringify({name, username, coverImage, profileImage, bio}),
-          headers:{
-          'Content-Type':"application/json"
-          }
-        });
+      await axios.patch('/api/edit',{ name, username, coverImage, profileImage, bio });
 
         mutateFetchedUser();
         toast.success('Updated successfully');
@@ -62,9 +57,9 @@ const submitHandler=useCallback(async ()=>{
 const bodyContent= (<div className='flex flex-col gap-4'>
 <ImageUpload value={profileImage} disabled={isLoading} onChange={(image)=>setProfileImage(image)} label='Upload Image'/>
 <ImageUpload value={coverImage} disabled={isLoading} onChange={(image)=>setCoverImage(image)} label='Upload Cover'/>
-<Input disabled={isLoading} placeholder='name' onChange={(e) => setName(e.target.value)} color={''} type={''}/>
-<Input disabled={isLoading} placeholder='username' onChange={(e) => setUsername(e.target.value)} color={''} type={''}/>
-<Input disabled={isLoading} placeholder='Bio' onChange={(e) => setBio(e.target.value)} color={''} type={''}/>
+<Input value={name} disabled={isLoading} placeholder='name' onChange={(e) => setName(e.target.value)} color={''} type={''}/>
+<Input value={username} disabled={isLoading} placeholder='username' onChange={(e) => setUsername(e.target.value)} color={''} type={''}/>
+<Input value={bio} disabled={isLoading} placeholder='Bio' onChange={(e) => setBio(e.target.value)} color={''} type={''}/>
 </div>)
 
   return (

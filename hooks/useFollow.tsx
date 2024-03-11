@@ -10,8 +10,6 @@ import useCurrentUser from './useCurrentUser';
 import { onLoginModal } from './useLoginModal';
 import useUser from './useUser';
 
-type Props = {}
-
 function useFollow(userId:string) {
 const {data:currentUser, mutate:mutateCurrentUser} = useCurrentUser();
 
@@ -32,6 +30,8 @@ const toggleFollow=useCallback(async ()=>{
 
     try {
         let request;
+
+        console.log(isFollowing);
 
         if(isFollowing){
             request= ()=> axios.delete('/api/follow', {data:{userId}});

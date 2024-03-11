@@ -4,14 +4,15 @@ type Props = {
     placeholder:string,
     color:string,
     type:string,
-    disabled:boolean,
+  disabled: boolean,
+    value?: string,
     onChange:(event:React.ChangeEvent<HTMLInputElement>)=>void
 }
 
-function Input({placeholder, color, onChange, type, disabled}: Props) {
+function Input({placeholder, color, onChange, type, disabled, value}: Props) {
   return (
     <div>
-        <input className='w-full transition disabled:bg-neutral-900 disabled:opacity-20 disabled:cursor-not-allowed focus:border-2 focus:border-sky-500 rounded-md text-white outline-none p-4 bg-black border-2 border-neutral-800' type={type} disabled={disabled} onChange={onChange} placeholder={placeholder} />
+        <input className='w-full transition disabled:bg-neutral-900 disabled:opacity-20 disabled:cursor-not-allowed focus:border-2 focus:border-sky-500 rounded-md text-white outline-none p-4 bg-black border-2 border-neutral-800' value={value} type={type} disabled={disabled} onChange={onChange} placeholder={placeholder} />
     </div>
   )
 }

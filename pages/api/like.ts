@@ -15,7 +15,7 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
     try {
         const {postId}=req.body;
 
-        const {currentUser}= await serverAuth(req);
+        const {currentUser}= await serverAuth(req, res);
 
         if(!postId || typeof postId !== 'string'){
             throw new Error('Invalid ID');
@@ -68,10 +68,10 @@ console.log(err);
             }
         })
 
-        return res.status(200).json(updatedPost);
+     res.status(200).json(updatedPost);
         
     } catch (error) {
      console.log(error);
-     return res.status(400).end();   
+     res.status(400).end();   
     }
 }

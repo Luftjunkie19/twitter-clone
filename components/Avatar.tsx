@@ -3,6 +3,8 @@ import React, { useCallback } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
+import userImage
+  from '@/assets/default-avatar-icon-of-social-media-user-vector.jpg';
 import useUser from '@/hooks/useUser';
 
 interface AvatarProps{
@@ -29,7 +31,7 @@ router.push(url);
     ${isLarge ? 'w-32' : 'w-12'}
     rounded-full hover:opacity-90 transition cursor-pointer relative
     `}>
-<Image fill style={{ objectFit: "cover", borderRadius: '100%' }} onClick={clickHandler} src={fetchedUser?.profileImage || ''} alt={''}/>
+<Image fill style={{ objectFit: "cover", borderRadius: '100%' }} onClick={clickHandler} src={fetchedUser?.profileImage || userImage} alt={''}/>
 
     </div>);
 }
