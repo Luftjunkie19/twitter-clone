@@ -6,9 +6,10 @@ import { getServerSession } from 'next-auth';
 
 import prisma from '@/lib/prismadb';
 import {authOptions} from '@/pages/api/auth/[...nextauth]';
+import { getSession } from 'next-auth/react';
 
 const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getServerSession(req, res, authOptions);
+  const session = await getSession({req});
 
   console.log(session?.user, session);
 
