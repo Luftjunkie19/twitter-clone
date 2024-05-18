@@ -24,7 +24,7 @@ const onSubmit= useCallback(async()=>{
         await signIn('credentials', {
             email,
             password
-        })
+        });
 
         loginModal.onClose();
     }catch(err){}

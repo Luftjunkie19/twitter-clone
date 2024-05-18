@@ -47,7 +47,7 @@ const onSubmit= useCallback(async()=>{
         toast.success('Account Created !');
 
         await signIn('credentials', {email,
-        password})
+        password});
 
         registerModal.onClose();
     }catch(err){
