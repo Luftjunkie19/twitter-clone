@@ -42,6 +42,7 @@ export const authOptions: AuthOptions = NextAuth({
       }
     })
   ],
+  debug: process.env.NODE_ENV === 'production',
   session: {
     strategy: 'jwt',
   },
