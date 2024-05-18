@@ -18,8 +18,6 @@ export const authOptions: AuthOptions = NextAuth({
         password: { label: 'password', type: 'password' }
       },
       async authorize(credentials) {
-        console.log(credentials);
-      
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
@@ -47,7 +45,7 @@ export const authOptions: AuthOptions = NextAuth({
       }
     })
   ],
-  debug: process.env.NODE_ENV === 'production',
+  debug: process.env.NODE_ENV !== 'production',
   session: {
     strategy: 'jwt',
   },
