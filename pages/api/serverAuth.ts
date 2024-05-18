@@ -9,7 +9,7 @@ import {authOptions} from '@/pages/api/auth/[...nextauth]';
 import { getSession } from 'next-auth/react';
 
 const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({req});
+  const session = await getSession();
 
   console.log(session?.user, session);
 
