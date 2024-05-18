@@ -30,7 +30,7 @@ export const authOptions: AuthOptions = NextAuth({
           }
         });
 
-        if (!user || !user?.hashedPassword) {
+        if (!user || !user.hashedPassword) {
           throw new Error('Invalid credentials');
         }
 
