@@ -12,7 +12,7 @@ import RegisterModal from '@/components/modals/RegisterModal';
 export default function App({ Component, pageProps }: AppProps) {
   return (
 <>
-<SessionProvider session={pageProps.session}>
+<SessionProvider session={pageProps.session} basePath='/api/auth'>
   <EditModal/>
   <Toaster/>
 <RegisterModal/>

@@ -5,6 +5,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import prisma from '@/lib/prismadb';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
+
 export const authOptions: AuthOptions = NextAuth({
   adapter: PrismaAdapter(prisma),
   pages: {
@@ -21,6 +22,8 @@ export const authOptions: AuthOptions = NextAuth({
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
+
+        
 
         const user = await prisma.user.findUnique({
           where: {
@@ -53,5 +56,6 @@ export const authOptions: AuthOptions = NextAuth({
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
   secret: process.env.NEXTAUTH_SECRET,
+  
 });
 
